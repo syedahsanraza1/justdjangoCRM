@@ -1,8 +1,15 @@
+<<<<<<< Updated upstream
 """
 URL configuration for djangocrm project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.2/topics/http/urls/
+=======
+"""djangocrm URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
+>>>>>>> Stashed changes
 Examples:
 Function views
     1. Add an import:  from my_app import views
