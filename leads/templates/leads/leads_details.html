@@ -9,19 +9,13 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-      
-        <ul> 
-        {% for lead in leads %}
-        <li><a href="/leads/{{ lead.pk }}">{{ lead.first_name }}</a></li>
-        <li>{{ lead.last_name }}</li>
-        <li>{{ lead.age }}</li>
-        <li>{{ lead.agent }}</li>
-        {% endfor %}
-        </ul>
-       
-        
+    <a href="../../">Return to leads</a>
+      <h1>Primary Key : {{ lead_detail_view1.pk }}</h1>
+      <h1>First Name : {{ lead_detail_view1.first_name }}</h1>
+      <h1>Last Name : {{ lead_detail_view1.last_name }}</h1>
+      <h1>Age : {{ lead_detail_view1.age }}</h1>
+      <h1>Agent : {{ lead_detail_view1.agent }}</h1>
         
         <script src="" async defer></script>
     </body>
 </html>
-
