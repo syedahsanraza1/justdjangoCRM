@@ -33,34 +33,54 @@ def create_leads(request):
     }
     return render(request , 'leads/create_leads.html',context)
 
-
 def lead_update(request,pk):
     lead = leads.objects.get(id=pk) 
-    context = {
-        "lead" : lead
-    }
-    print(request.POST)
+    form = leadmodelform(instance=lead)
     if request.method =="POST":
-        print("Reciving post request")
-        form = leadform(request.POST)
+        print("Reciving update post request")
+        form = leadmodelform(request.POST,instance=lead)
         if form.is_valid():
-            print("checking if data is valid")
-            print(form.cleaned_data)
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
-            age = form.cleaned_data['age']
-            
-            lead.first_name = first_name
-            lead.last_name = last_name
-            lead.age = age
-            lead.save()
-            print('the lead has been created')
+            form.save()
             return redirect("/")
     context = {
-        "form" : leadform()
-        
+        "lead" : lead,
+        "form" : form
     }
     return render(request, "leads/update_leads.html",context)
+
+def delete_lead(request,pk):
+    lead = leads.objects.get(id=pk)
+    lead.delete()
+    return redirect("/")
+
+
+#def lead_update(request,pk):
+#    lead = leads.objects.get(id=pk) 
+#    context = {
+#        "lead" : lead
+#    }
+#    print(request.POST)
+#    if request.method =="POST":
+#        print("Reciving post request")
+#        form = leadform(request.POST)
+#        if form.is_valid():
+#            print("checking if data is valid")
+#            print(form.cleaned_data)
+#            first_name = form.cleaned_data['first_name']
+#            last_name = form.cleaned_data['last_name']
+#            age = form.cleaned_data['age']
+#            
+#            lead.first_name = first_name
+#            lead.last_name = last_name
+#            lead.age = age
+#            lead.save()
+#            print('the lead has been created')
+#            return redirect("/")
+#    context = {
+#        "form" : leadform()
+#        
+#    }
+#    return render(request, "leads/update_leads.html",context)
 
 
 #def create_leads(request):
