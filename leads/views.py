@@ -10,4 +10,11 @@ def home_page(request):
     context ={
         "leads" : lead
     }
-    return render(request, 'next_page.html' , context)
+    return render(request, 'leads/home_page.html' , context)
+
+def lead_detail(request,pk):
+    lead_detail_view = leads.objects.get(id=pk)
+    context = {
+        "lead_detail_view1" : lead_detail_view
+    }
+    return render(request , 'leads/leads_details.html' , context)
